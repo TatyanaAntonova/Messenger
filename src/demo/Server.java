@@ -4,9 +4,9 @@ import java.io.*;
 import java.net.Socket;
 
 public class Server extends Thread {
-    Socket socket;
-    BufferedReader reader;
-    BufferedWriter writer;
+    private Socket socket;
+    private BufferedReader reader;
+    private BufferedWriter writer;
 
     Server(Socket socket) {
         this.socket = socket;
@@ -32,13 +32,13 @@ public class Server extends Thread {
             }
 
             if (message.equals("exit")) {
-                ServerMain.serverList.remove(this);
+                ServerMain.getServerList().remove(this);
                 break;
             }
 
             System.out.println(message);
 
-            for (Server server : ServerMain.serverList) {
+            for (Server server : ServerMain.getServerList()) {
                 server.send(message);
             }
         }
