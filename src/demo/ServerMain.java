@@ -8,7 +8,7 @@ import java.util.LinkedList;
 public class ServerMain {
     public static final int PORT = 4004;
     private static ServerSocket server;
-    static LinkedList<Server> serverList = new LinkedList<>();
+    private static LinkedList<Server> serverList = new LinkedList<>();
 
     ServerMain() {
         try {
@@ -18,6 +18,10 @@ public class ServerMain {
         }
     }
 
+    public static LinkedList<Server> getServerList() {
+        return serverList;
+    }
+    
     public static void main(String[] args) {
         
         System.out.println("Server starts working!");
